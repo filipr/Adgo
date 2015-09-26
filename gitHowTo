@@ -1,0 +1,57 @@
+git hist - in .gitconfig = history 
+git hist master --all = zobtazí i budoucí verze a navíc tagy verzí
+
+git checkout <hascode-of-commit> = navrat ke commitu 
+git checkout master = zpet dopředu v čase, maste je jmeno - vzdy jde k nejnovejsi verzi 
+git tag v1 = oznaci verzi 
+git tag -d oops        Smaze tag
+
+git checkout v1^ = verze těsně před v1
+
+
+Pokud chci vratit změny v lok. adresáři: 
+git reset HEAD hello.rb -- pokud uuž jsem dal git add hello.rb (tedy je staged) POTOM: 
+git checkout hello.rb 
+
+git revert HEAD -- vrátí předchozí commit (udělá novou verzi) 
+git reset --hard v1 -- smaze nasledujici commity po verzi v1 v tom smyslu, že nejsou vidět v historii 
+
+
+#MOVE files using git - track the changes 
+mkdir lib
+git mv hello.rb lib
+
+OR 
+mkdir lib
+mv hello.rb lib
+git add lib/hello.rb
+git rm hello.rb
+
+BRANCHES 
+git checkout -b greet
+git status
+
+TO Master 
+git checkout master
+
+Back to branch 
+git checkout greet 
+
+git merge master - větev obsahuje všechny své změny + změny v master 
+
+git rebase master - stejné, jen strom změn bude lineární - přehlednější, zapojí změny hezky za sebe
+
+pro změny v týmu používat merge , protoze rebase vytvori zmatek 
+
+
+Pripojeni vetve zpet k master: 
+git checkout master 
+git merge greet 
+
+
+Z githubu: 
+
+git pull 
+
+Na github: 
+git push
